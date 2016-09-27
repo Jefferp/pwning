@@ -4,9 +4,9 @@ using namespace std;
 
 void calcCounty(double total, double &county);
 void calcState(double total, double &state);
-void calcTotal(double county, double state, double &total);
-void printData(double calcCounty,double calcState,double calcTotal);
-void datainput(double total);
+void calcTotal(double county, double state, double &totaltax);
+void printData(double county,double state,double totaltax);
+void datainput(double &total);
 
 int main()
 {
@@ -14,19 +14,15 @@ int main()
 	double total;
 	double county;
 	double state;
-	double calcCounty;
-	double calcState;
-	double calcTotal;
+	double totaltax;
 
 	cout << "Welcome to the total tax calculator program! " << endl;
 	
 	datainput(total);
 	calcCounty(total, county);
 	calcState(total, state);
-	calcTotal(county, state, total);
-	printData(county, state, total);
-
-	cout << "Author: Jeffrey Sirimaturos \n";
+	calcTotal(county, state, totaltax);
+	printData(county, state, totaltax);
 
 
 	system("pause");
@@ -34,10 +30,11 @@ int main()
 }
 
 
-void datainput(double total)
+void datainput(double &total)
 {
 	cout << "Enter the total sales for the month: ";
 	cin >> total;
+	cout << endl;
 }
 
 void calcCounty(double total, double &county)
@@ -50,15 +47,17 @@ void calcState(double total, double &state)
 	state = total * .04;
 }
 
-void calcTotal(double &county, double &state, double total)
+void calcTotal(double county, double state, double &totaltax)
 {
-	total = state + county;
+	totaltax = state + county;
 }
 
-void printData(double calcCounty,double calcState,double calcTotal)
+void printData(double county,double state,double totaltax)
 {
-	cout << "The county tax is $ " << calcCounty;
-	cout << "The state tax is $ " << calcState;
-	cout << "The total tax is $ " << calcTotal;
+	cout << "------------------------------- " << endl;
+	cout << "The county tax is $ " << county << endl;
+	cout << "The state  tax is $ " << state << endl;
+	cout << "The total  tax is $ " << totaltax << endl;
+	cout << "------------------------------- " << endl;
 }
 
